@@ -3,7 +3,7 @@ Example repository with configuration for a Kubernetes cluster on AWS GovCloud. 
 
 ### This repo does not use EKS, AKS, or any managed Kubernetes tooling.  It is meant for getting Kubernetes up and running quickly on nontypical cloud environments like AWS GovCloud or Azure Government where these managed services may not exist.
 
-## Sections
+## Folders
 
 ### Kops - Cluster Set Up
 
