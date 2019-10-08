@@ -17,9 +17,11 @@ Anchore Engine - Open Source Container Scanning
 
 ### CI/CD
 
-Jenkins X - Kubernetes-native Jenkins
+Jenkins X - Kubernetes-native Jenkins (including SonarType Nexus)
 
-Tekton Pipeline - Born out of Knative pipelines, uses CRDs to specify CI/CD pipelines
+Tekton Pipelines - Born out of Knative pipelines, uses CRDs to specify CI/CD pipelines
+
+FluxCD - Kubernetes-native GitOps CD with polling mechanism
 
 ### Code Quality
 
