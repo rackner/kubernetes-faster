@@ -1,0 +1,238 @@
+apiVersion: kops/v1alpha2
+kind: Cluster
+metadata:
+  creationTimestamp: null
+  name: my-cluster-name.k8s.local
+spec:
+  additionalPolicies:
+    node: |
+      [
+        {"Effect":"Allow","Action":["autoscaling:DescribeAutoScalingGroups","autoscaling:DescribeAutoScalingInstances","autoscaling:DescribeLaunchConfigurations","autoscaling:DescribeTags","autoscaling:SetDesiredCapacity","autoscaling:TerminateInstanceInAutoScalingGroup"],"Resource":"*"},
+        {"Effect": "Allow",
+         "Action": [
+                "s3:DeleteObjectTagging",
+                "s3:PutObject",
+                "s3:DeleteObjectVersion",
+                "s3:Get*",
+                "s3:PutObjectVersionTagging",
+                "s3:PutObjectTagging",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws-us-gov:s3:::test-bucket-name",
+                "arn:aws-us-gov:s3:::test-bucket-name/*"            ]
+        }
+      ]
+  api:
+    loadBalancer:
+      idleTimeoutSeconds: 300
+      type: Internal
+  authorization:
+    rbac: {}
+  channel: stable
+  cloudLabels:
+    Enviroment: GovCloud
+    Project: MyProject
+    Service: Kubernetes
+  cloudProvider: aws
+  configBase: s3://my-kops-bucket/my-cluster-name.k8s.local
+  etcdClusters:
+  - etcdMembers:
+    - encryptedVolume: true
+      instanceGroup: master-us-gov-west-1a
+      name: a
+    - encryptedVolume: true
+      instanceGroup: master-us-gov-west-1b
+      name: b
+    - encryptedVolume: true
+      instanceGroup: master-us-gov-west-1c
+      name: c
+    name: main
+  - etcdMembers:
+    - encryptedVolume: true
+      instanceGroup: master-us-gov-west-1a
+      name: a
+    - encryptedVolume: true
+      instanceGroup: master-us-gov-west-1b
+      name: b
+    - encryptedVolume: true
+      instanceGroup: master-us-gov-west-1c
+      name: c
+    name: events
+  iam:
+    allowContainerRegistry: true
+    legacy: false
+  kubeAPIServer:
+    admissionControl:
+    - NamespaceLifecycle
+    - LimitRanger
+    - ServiceAccount
+    - PersistentVolumeLabel
+    - DefaultStorageClass
+    - DefaultTolerationSeconds
+    - MutatingAdmissionWebhook
+    - ValidatingAdmissionWebhook
+    - ResourceQuota
+    - NodeRestriction
+    - Priority
+  kubernetesApiAccess:
+  - 0.0.0.0/0
+  kubernetesVersion: 1.15.1
+  masterPublicName: api.my-cluster-name.k8s.local
+  networkCIDR: 10.12.12.0/22
+  networkID: vpc-9a9a9a9a9
+  networking:
+    weave:
+      mtu: 8912
+  nonMasqueradeCIDR: 100.64.0.0/10
+  sshAccess:
+  - 0.0.0.0/0
+  subnets:
+  - cidr: 10.12.12.0/26
+    id: subnet-1a1a1a1a
+    name: public-subnetA
+    type: Public
+    zone: us-gov-west-1a
+  - cidr: 10.12.13.0/26
+    id: subnet-2a2a2a2a
+    name: public-subnetB
+    type: Public
+    zone: us-gov-west-1b
+  - cidr: 10.12.14.0/26
+    id: subnet-3a3a3a3a
+    name: public-subnetC
+    type: Public
+    zone: us-gov-west-1c
+  - cidr: 10.12.12.64/26
+    id: subnet-4a4a4a4a
+    name: private-subnetA
+    type: Private
+    zone: us-gov-west-1a
+  - cidr: 10.12.13.64/26
+    id: subnet-5a5a5a5a
+    name: private-subnetB
+    type: Private
+    zone: us-gov-west-1b
+  - cidr: 10.12.14.64/26
+    id: subnet-6a6a6a6a
+    name: private-subnetC
+    type: Private
+    zone: us-gov-west-1c
+  topology:
+    dns:
+      type: Public
+    masters: private
+    nodes: private
+
+---
+
+apiVersion: kops/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: 2019-07-01T01:42:39Z
+  labels:
+    kops.k8s.io/cluster: my-cluster-name.k8s.local
+  name: master-us-gov-west-1a
+spec:
+  cloudLabels:
+    Enviroment: prod
+    Project: prod
+    Service: Kubernetes
+    k8s.io/cluster-autoscaler/enabled: ""
+    kubernetes.io/cluster/my-cluster-name.k8s.local: owned
+  image: ami-fce1701e
+  machineType: m4.large
+  maxSize: 4
+  minSize: 2
+  nodeLabels:
+    kops.k8s.io/instancegroup: master-us-gov-west-1a
+  role: Master
+  rootVolumeSize: 21
+  rootVolumeType: gp2
+  subnets:
+  - public-subnetA
+
+---
+
+apiVersion: kops/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: 2019-07-01T01:42:45Z
+  labels:
+    kops.k8s.io/cluster: my-cluster-name.k8s.local
+  name: master-us-gov-west-1b
+spec:
+  cloudLabels:
+    Enviroment: prod
+    Project: prod
+    Service: Kubernetes
+    k8s.io/cluster-autoscaler/enabled: ""
+    kubernetes.io/cluster/my-cluster-name.k8s.local: owned
+  image: ami-fce1701e
+  machineType: m4.large
+  maxSize: 4
+  minSize: 2
+  nodeLabels:
+    kops.k8s.io/instancegroup: master-us-gov-west-1b
+  role: Master
+  rootVolumeSize: 20
+  rootVolumeType: gp2
+  subnets:
+  - public-subnetB
+
+---
+
+apiVersion: kops/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: 2019-07-01T01:42:45Z
+  labels:
+    kops.k8s.io/cluster: my-cluster-name.k8s.local
+  name: master-us-gov-west-1c
+spec:
+  cloudLabels:
+    Enviroment: prod
+    Project: prod
+    Service: Kubernetes
+    k8s.io/cluster-autoscaler/enabled: ""
+    kubernetes.io/cluster/my-cluster-name.k8s.local: owned
+  image: ami-fce1701e
+  machineType: m4.large
+  maxSize: 4
+  minSize: 2
+  nodeLabels:
+    kops.k8s.io/instancegroup: master-us-gov-west-1c
+  role: Master
+  rootVolumeSize: 20
+  rootVolumeType: gp2
+  subnets:
+  - public-subnetC
+
+---
+
+apiVersion: kops/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: 2019-07-01T01:42:49Z
+  labels:
+    kops.k8s.io/cluster: my-cluster-name.k8s.local
+  name: nodes
+spec:
+  cloudLabels:
+    Enviroment: prod
+    Project: prod
+    Service: Kubernetes
+    k8s.io/cluster-autoscaler/enabled: ""
+    kubernetes.io/cluster/my-cluster-name.k8s.local: owned
+  image: ami-fce1701e
+  machineType: m4.large
+  maxSize: 40
+  minSize: 20
+  nodeLabels:
+    kops.k8s.io/instancegroup: nodes
+  role: Node
+  rootVolumeSize: 20
+  subnets:
+  - private-subnetA
+  - private-subnetB
+  - private-subnetC
