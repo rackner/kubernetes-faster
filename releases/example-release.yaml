@@ -1,0 +1,18 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: example-application
+  namespace: development
+  annotations:
+    flux.weave.works/tag.chart-image: glob:development
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: example-application
+  chart:
+    git: ssh://git@github.com/rackner/kubernetes-faster
+    ref: master
+    path: applications/example-application
+  values:
+    image: test-container-repository.ecr.com/rackner/example-application
+    tag: development
