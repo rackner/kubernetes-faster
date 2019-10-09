@@ -1,10 +1,12 @@
 # Starter
 
-This folder contains Helm Charts for all the various default components that we run on our cluster.
+This folder contains Helm Charts and in some cases, plain Kubernetes YAML files. for all the various default components that we run on our cluster.
 
 A full breakdown and explanation of the components is below.
 
 ## Istio
+
+Istio is a popular Service Mesh implementation which provides advanced networking and service discovery functionality and is often used with Kubernetes.  The Istio folder contains a forked Readme for installing Istio which occurs in 2 parts - first the installation of the 23 CRDs which Istio requires, then the installation of Istio itself.  We are using the default configuration with automatic sidecar injection.
 
 ## Knative
 
