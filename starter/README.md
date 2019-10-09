@@ -18,6 +18,10 @@ Knative is an implementation of the Serverless pattern on Kubernetes.  It allows
 
 Anchore Engine is an Open Source container scanning and policy evaluation tool.  It is used as part of the CI/CD pipeline.
 
+## Jenkins
+
+The Jenkins folder contains helm charts for deploying a master and agent Jenkins cluster on Kubernetes
+
 ## SonarQube
 
 SonarQube is used in the pre-container pipeline for code quality and security scanning across dozens of programming languages. We run the platform on Kubernetes using the attached helm chart.  It makes use of a Persistent Volume and Persistent Volume Claim for storage.

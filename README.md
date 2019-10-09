@@ -28,7 +28,7 @@ Anchore Engine - Open Source Container Scanning
 
 ### CI/CD
 
-Jenkins X - Kubernetes-native Jenkins (including SonarType Nexus)
+Jenkins - Jenkins master and agent cluster on Kubernetes using Helm
 
 Tekton Pipelines - Born out of Knative pipelines, uses CRDs to specify CI/CD pipelines
 
@@ -45,8 +45,8 @@ Prometheus + Grafana - Kubernetes centralized metrics and monitoring dashboard
 ### Logging
 
 ELK Stack
-
 ElasticSearch - Industry-standard search stack
+LogStash - Log Forwarder
 Kibana - Log Visualizer and Search/Filtering Dashboard
 
 ## Applications
