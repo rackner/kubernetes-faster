@@ -33,3 +33,12 @@ The Elastic Stack folder includes helm charts for installing Elastic Stack confi
 ## Prometheus + Grafana
 
 Prometheus and Grafana are popular and well supported metrics collection and visualization tools, respectively.  We use the Prometheus operator to run prometheus on our clusters in a way that can scale up.  By default, this provides centralized metric collection from all nodes, pods - anything that is accessible via extended metrics from the kubelet.  Additionally in this configuration we would extend this pattern to include additional metrics from Istio and Knative, but custom application metrics can also be included.
+
+## Falco
+
+Falco is an open source project which provides intrusion detection using Linux Kernel instrumentation.
+
+## Open Policy Agent
+
+Open Policy Agent is an open source policy engine, in this case deployed as a Kubernetes Admission Controller
+to allow for request interception when accessing the Kubernetes API.  The Admission Controller will check the request against the policy engine ruleset to ensure that bad actors with access to the Kubernetes API cannot run rampant.
