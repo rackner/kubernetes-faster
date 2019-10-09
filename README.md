@@ -22,21 +22,21 @@ Istio - Service Mesh
 
 Knative - Serverless Platform built on Kubernetes
 
-### Container Scanning
+### Security
 
 Anchore Engine - Open Source Container Scanning
+
+Falco - Kubernetes Runtime Security to check for outlier application behavior
+
+Open Policy Agent - An open source policy engine, in this case deployed as a Kubernetes Admission Controller to allow for request interception when accessing the Kubernetes API.  The Admission Controller will check the request against the policy engine ruleset to ensure that bad actors with access to the Kubernetes API cannot run rampant.
+
+SonarQube - Code Quality and Security scanning
 
 ### CI/CD
 
 Jenkins - Jenkins master and agent cluster on Kubernetes using Helm
 
-Tekton Pipelines - Born out of Knative pipelines, uses CRDs to specify CI/CD pipelines
-
 FluxCD - Kubernetes-native GitOps CD with polling mechanism
-
-### Code Quality
-
-SonarQube - Code Quality and Security scanning
 
 ### Metrics & Monitoring
 
@@ -48,6 +48,10 @@ ELK Stack
 ElasticSearch - Industry-standard search stack
 LogStash - Log Forwarder
 Kibana - Log Visualizer and Search/Filtering Dashboard
+
+## Releases
+
+This folder contains "Releases" which are CRDs that will get created in the cluster that define where FluxCD looks for during its control loop for our GitOps CI/CD.
 
 ## Applications
 
