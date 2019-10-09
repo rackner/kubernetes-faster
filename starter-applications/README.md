@@ -12,7 +12,7 @@ This also includes installation of Kiali, a UI which provides observability for 
 
 ## Knative
 
-Knative is an implementation of the Serverless pattern on Kubernetes.  It allows for no touch scaling up and down (to zero) for a container workload that depends on an event based model.  Knative works with Istio as its backbone.
+Knative is an implementation of the Serverless pattern on Kubernetes.  It allows for no touch scaling up and down (to zero) for container workloads based on an events based model, similar to AWS Lambda.  Knative works with Istio as its backbone.
 
 ## Anchore Engine
 
