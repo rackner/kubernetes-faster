@@ -28,7 +28,7 @@ Anchore Engine - Open Source Container Scanning
 
 Falco - Kubernetes Runtime Security to check for outlier application behavior
 
-Open Policy Agent - An open source policy engine, in this case deployed as a Kubernetes Admission Controller to allow for request interception when accessing the Kubernetes API.  The Admission Controller will check the request against the policy engine ruleset to ensure that bad actors with access to the Kubernetes API cannot run rampant.
+Open Policy Agent - An open source policy engine used as a Kubernetes Admission Controller
 
 SonarQube - Code Quality and Security scanning
 
