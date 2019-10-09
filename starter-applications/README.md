@@ -1,4 +1,4 @@
-# Starter
+# Starter Applications
 
 This folder contains Helm Charts and in some cases, plain Kubernetes YAML files. for all the various default components that we run on our cluster.
 
