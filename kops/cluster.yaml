@@ -82,8 +82,8 @@ spec:
   networkCIDR: 10.12.12.0/22
   networkID: vpc-9a9a9a9a9
   networking:
-    weave:
-      mtu: 8912
+    calico:
+      majorVersion: v3
   nonMasqueradeCIDR: 100.64.0.0/10
   sshAccess:
   - 0.0.0.0/0
