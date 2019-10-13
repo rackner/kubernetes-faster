@@ -2,6 +2,12 @@
 
 This folder contains Helm Charts and in some cases, plain Kubernetes YAML files. for all the various default components that we run on our cluster.
 
+To install an application from this folder onto our cluster, we run
+
+```
+helm upgrade --install /path/to/app/folder
+```
+
 A full breakdown and explanation of the components is below.
 
 ## Istio
@@ -36,7 +42,8 @@ Prometheus and Grafana are popular and well supported metrics collection and vis
 
 ## Falco
 
-Falco is an open source project which provides intrusion detection using Linux Kernel instrumentation.
+Falco is an open source project which provides intrusion detection using Linux Kernel instrumentation.  The implementation of Falco in the /falco folder contains base best practice rules for a host of possible applications, many of which are already installed on this cluster (e.g. the ELK stack).
+
 
 ## Open Policy Agent
 

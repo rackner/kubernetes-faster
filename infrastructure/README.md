@@ -4,7 +4,7 @@ This folder contains infrastructure as code for our cluster and the surrounding 
 
 ## Terraform
 
-This folder contains terraform files for the cluster infrastructure.
+This folder contains terraform files for the cluster infrastructure.  This will work in concert with Kops to create the surrounding network policy infrastructure on AWS.
 
 ## Kops
 
