@@ -14,6 +14,10 @@ This folder contains the artifacts for a Kops-run cluster on AWS GovCloud. Kops 
 
 This folder contains forked helm charts (and in some cases, plain Kubernetes YAML files) for a variety of applications which run on our default clusters. We run several types of applications, all of which are peripheral in nature. We've included a brief sentence about the components here, but for a full explanation check the documentation in the /helm folder.  In the future, as more packages support Kustomize, that may alternately be used instead.
 
+Assuming the installation of all starter-applications, the stack diagram for our Nodes and Pods looks like this:
+
+What follows is a list of the applications in our starter application set. There is a MUCH more in depth explanation of the applications that were chosen (and why they were chosen) in the readme inside the starter-applications folder.
+
 ### Service Mesh
 
 Istio - Service Mesh
