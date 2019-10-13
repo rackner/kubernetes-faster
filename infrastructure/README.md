@@ -1,4 +1,12 @@
-# Kops
+# Infrastructure
+
+This folder contains infrastructure as code for our cluster and the surrounding networking in AWS GovCloud.
+
+## Terraform
+
+This folder contains terraform files for the cluster infrastructure.
+
+## Kops
 
 Contained in this folder is an example Kops cluster config for AWS GovCloud. All kubeconfig and certificate/pki information has been removed.
 
