@@ -253,11 +253,11 @@ integrations:
   #     keep_alive: true
   #     filename: /var/run/falco/nats
   snsOutput:
-    enabled: false
-    topic: ""
-    aws_access_key_id: ""
-    aws_secret_access_key: ""
-    aws_default_region: ""
+    enabled: true
+    topic: "staging-cluster-example-sns-topic"
+    aws_access_key_id: "redacted"
+    aws_secret_access_key: "redacted"
+    aws_default_region: "redacted"
 
 
   # If GCloud Pub/Sub integration is enabled, falco will be configured to use this
