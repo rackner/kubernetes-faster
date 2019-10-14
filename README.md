@@ -16,6 +16,8 @@ This folder contains forked helm charts (and in some cases, plain Kubernetes YAM
 
 Assuming the installation of all starter-applications, the stack diagram for our Nodes and Pods looks like this:
 
+![Stack Diagram](https://github.com/rackner/kubernetes-faster/StackDiagram.jpg)
+
 What follows is a list of the applications in our starter application set. There is a MUCH more in depth explanation of the applications that were chosen (and why they were chosen) in the readme inside the starter-applications folder.
 
 ### Service Mesh
@@ -41,6 +43,8 @@ SonarQube - Code Quality and Security scanning
 Jenkins - Jenkins master and agent cluster on Kubernetes using Helm
 
 FluxCD - Kubernetes-native GitOps CD with polling mechanism
+
+The CI/CD Pipeline we're using looks like this: ![CI/CD Pipeline](https://github.com/rackner/kubernetes-faster/DevOpsPipeline.jpg)
 
 ### Metrics & Monitoring
 
