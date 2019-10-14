@@ -2,13 +2,17 @@
 
 Example repository with configuration for a Kubernetes cluster on AWS GovCloud. Certificates and PKI information are removed.
 
-### This repo does not use EKS, AKS, or any managed Kubernetes tooling. It is meant for getting Kubernetes up and running quickly on nontypical cloud environments like AWS GovCloud or Azure Government where these managed services may not exist.
+### This repo does not use EKS, AKS, or any managed Kubernetes tooling. It is meant for getting Kubernetes up and running quickly on nontypical (unmanaged) cloud environments like AWS GovCloud or Azure Government where these managed services may not exist.
 
 # Folders
 
 ## Kops - Cluster Set Up
 
 This folder contains the artifacts for a Kops-run cluster on AWS GovCloud. Kops is used to bootstrap the cluster as well as spin up the actual infrastructure on AWS EC2 in GovCloud. Kops is also used to perform operational tasks like node rotations and upgrades.
+
+Kops officially supports AWS (and GovCloud) - with Google Cloud (GCE specifically) and OpenStack in beta - and VMWare vSphere in alpha.
+
+On an on premise environment that doesn’t fit any of these supported versions, we would use kubeadm.
 
 ## Starter Applications - Starting cluster applications & tooling
 
